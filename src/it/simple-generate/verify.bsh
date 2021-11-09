@@ -1,0 +1,5 @@
+import java.io.File;
+
+File attributionFile = new File( basedir, "target/attribution.txt" );
+
+return attributionFile.isFile();
