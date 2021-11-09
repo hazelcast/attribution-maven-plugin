@@ -13,6 +13,7 @@
     <url>https://github.com/hazelcast/attribution-maven-plugin/</url>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         <mavenVersion>3.6.3</mavenVersion>
@@ -109,6 +110,26 @@
                 </executions>
             </plugin>
             <plugin>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5.2</version>
+                <executions>
+                    <execution>
+                        <id>install-for-it</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
+                            <artifactId>${project.artifactId}</artifactId>
+                            <groupId>${project.groupId}</groupId>
+                            <version>${project.version}</version>
+                            <file>${project.build.directory}/${project.artifactId}-${project.version}.jar</file>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.1.2</version>
@@ -137,10 +158,12 @@
                 <version>3.2.2</version>
                 <configuration>
                     <projectsDirectory>src/it</projectsDirectory>
+                    <localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
                     <postBuildHookScript>verify</postBuildHookScript>
+                    <!-- -->
                     <goals>
                         <goal>clean</goal>
-                        <goal>package</goal>
+                        <goal>install</goal>
                     </goals>
                     <debug>true</debug>
                 </configuration>
