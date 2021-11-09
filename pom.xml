@@ -138,6 +138,11 @@
                 <configuration>
                     <projectsDirectory>src/it</projectsDirectory>
                     <postBuildHookScript>verify</postBuildHookScript>
+                    <goals>
+                        <goal>clean</goal>
+                        <goal>package</goal>
+                    </goals>
+                    <debug>true</debug>
                 </configuration>
                 <executions>
                     <execution>

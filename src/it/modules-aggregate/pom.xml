@@ -5,19 +5,17 @@
     xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.hazelcast.maven.it</groupId>
-    <artifactId>simple-generate</artifactId>
+    <groupId>com.hazelcast.maven.it.modules-aggregate</groupId>
+    <artifactId>modules-aggregate</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <name>${project.artifactId}</name>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.32</version>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>moduleA</module>
+        <module>moduleB</module>
+    </modules>
 
     <build>
         <plugins>
@@ -25,10 +23,11 @@
                 <groupId>com.hazelcast.maven</groupId>
                 <artifactId>attribution-maven-plugin</artifactId>
                 <version>@pom.version@</version>
+                <inherited>false</inherited>
                 <executions>
                     <execution>
                         <goals>
-                            <goal>generate</goal>
+                            <goal>aggregate</goal>
                         </goals>
                     </execution>
                 </executions>
