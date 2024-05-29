@@ -19,7 +19,7 @@ import java.util.Set;
  */
 @Mojo(name = "aggregate", defaultPhase = LifecyclePhase.PROCESS_RESOURCES,
         aggregator = true, requiresDependencyCollection = ResolutionScope.COMPILE_PLUS_RUNTIME,
-        requiresDependencyCollection = ResolutionScope.TEST, requiresDependencyResolution = ResolutionScope.TEST,
+        requiresDependencyResolution = ResolutionScope.TEST,
         threadSafe = true)
 public class AggregateAttributionMojo extends AbstractAttributionMojo {
 
