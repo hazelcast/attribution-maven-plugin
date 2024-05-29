@@ -16,7 +16,7 @@ import org.apache.maven.project.ProjectBuildingRequest;
  * Generates the attribution file for a single project.
  */
 @Mojo(name = "generate", defaultPhase = LifecyclePhase.GENERATE_RESOURCES,
-    requiresDependencyCollection = ResolutionScope.TEST, requiresDependencyResolution = ResolutionScope.TEST,
+    requiresDependencyCollection = ResolutionScope.COMPILE_PLUS_RUNTIME, requiresDependencyResolution = ResolutionScope.TEST,
     threadSafe = true)
 public class GenerateAttributionMojo extends AbstractAttributionMojo {
 
