@@ -44,7 +44,7 @@ jobs:
         git commit -am "Next version is ${{ github.event.inputs.next-snapshot-version }}"
         git push origin v${{ github.event.inputs.release-version }} main
       env:
-        MAVEN_OPTS: --batch-mode --no-transfer-progress --errors
+        MAVEN_ARGS: --batch-mode --no-transfer-progress --errors
         MAVEN_USERNAME: ${{ secrets.SONATYPE_OSS_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.SONATYPE_OSS_PASSWORD }}
         MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}

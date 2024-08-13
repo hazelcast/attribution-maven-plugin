@@ -23,4 +23,4 @@ jobs:
           mvn install
           mvn -Prun-its verify -DskipTests
         env:
-          MAVEN_OPTS: --batch-mode --no-transfer-progress --errors
+          MAVEN_ARGS: --batch-mode --no-transfer-progress --errors
