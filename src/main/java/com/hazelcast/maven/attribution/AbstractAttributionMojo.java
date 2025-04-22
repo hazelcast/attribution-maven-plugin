@@ -7,7 +7,6 @@ import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.DefaultProjectBuildingRequest;
 import org.apache.maven.project.MavenProject;
@@ -44,6 +43,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+import javax.inject.Inject;
 
 public abstract class AbstractAttributionMojo extends AbstractMojo {
 
@@ -126,7 +126,7 @@ public abstract class AbstractAttributionMojo extends AbstractMojo {
     @Parameter
     protected List<String> exclusionPatterns;
 
-    @Component
+    @Inject
     protected AttribResourceResolver resourceResolver;
 
     public void execute() throws MojoExecutionException, MojoFailureException {
