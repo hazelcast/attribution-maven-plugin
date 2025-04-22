@@ -21,4 +21,13 @@ jobs:
       - name: Maven, now you do the magic! I enchant you the Bash way!
         run: |
           mvn --batch-mode --update-snapshots install
-          mvn --batch-mode -Prun-its verify -DskipTests
+      - name: Maven, now you do the magic! I enchant you the Bash way!
+        run: |
+          mvn --batch-mode -Prun-its verify -DskipTests -X
+
+      - name: Save logs if the spell goes wrong 🧙‍♂️
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: log-files
+          path: '**/*.log'
