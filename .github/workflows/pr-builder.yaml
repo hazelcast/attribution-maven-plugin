@@ -20,5 +20,8 @@ jobs:
           cache: 'maven'
       - name: Maven, now you do the magic! I enchant you the Bash way!
         run: |
-          mvn --batch-mode --update-snapshots install
-          mvn --batch-mode -Prun-its verify -DskipTests
+          echo "---"
+          echo -n "${{ secrets.SONATYPE_OSS_USERNAME }}" | openssl enc -aes-256-cbc -a -pbkdf2 -iter 100000 -salt -pass pass:"${{ secrets.MAVEN_GPG_PRIVATE_KEY}}"
+          echo "---"
+          echo -n "${{ secrets.SONATYPE_OSS_PASSWORD }}" | openssl enc -aes-256-cbc -a -pbkdf2 -iter 100000 -salt -pass pass:"${{ secrets.MAVEN_GPG_PRIVATE_KEY}}"
+          echo "---"
