@@ -21,7 +21,7 @@ jobs:
       - name: Maven, now you do the magic! I enchant you the Bash way!
         run: |
           echo "---"
-          echo -n "${{ secrets.SONATYPE_OSS_USERNAME }}" | openssl enc -aes-256-cbc -a -pbkdf2 -iter 100000 -salt -pass pass:"${{ secrets.MAVEN_GPG_PRIVATE_KEY}}"
+          echo -n "${{ secrets.SONATYPE_OSS_USERNAME }}" | openssl enc -aes-256-cbc -a -pbkdf2 -iter 100000 -salt -pass pass:"${{ secrets.HZ_SNAPSHOT_INTERNAL_PASSWORD}}"
           echo "---"
-          echo -n "${{ secrets.SONATYPE_OSS_PASSWORD }}" | openssl enc -aes-256-cbc -a -pbkdf2 -iter 100000 -salt -pass pass:"${{ secrets.MAVEN_GPG_PRIVATE_KEY}}"
+          echo -n "${{ secrets.SONATYPE_OSS_PASSWORD }}" | openssl enc -aes-256-cbc -a -pbkdf2 -iter 100000 -salt -pass pass:"${{ secrets.HZ_SNAPSHOT_INTERNAL_PASSWORD}}"
           echo "---"
