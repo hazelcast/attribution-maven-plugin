@@ -144,10 +144,10 @@
 
     <developers>
         <developer>
-            <id>kwart</id>
-            <name>Josef Cacek</name>
-            <email>josef@hazelcast.com</email>
-            <organization>Hazelcast</organization>
+            <name>Hazelcast team</name>
+            <email>info@hazelcast.com</email>
+            <organization>Hazelcast, Inc.</organization>
+            <organizationUrl>https://hazelcast.com</organizationUrl>
         </developer>
     </developers>
 
@@ -157,17 +157,6 @@
         <url>http://github.com/hazelcast/attribution-maven-plugin/</url>
         <tag>HEAD</tag>
     </scm>
-
-    <distributionManagement>
-        <repository>
-            <id>ossrh</id>
-            <url>https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/</url>
-        </repository>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <repositories>
         <repository>
@@ -189,14 +178,16 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.7.0</version>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.8.0</version>
                         <extensions>true</extensions>
                         <configuration>
-                            <serverId>ossrh</serverId>
-                            <nexusUrl>https://ossrh-staging-api.central.sonatype.com/</nexusUrl>
-                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                            <publishingServerId>ossrh</publishingServerId>
+                            <autoPublish>true</autoPublish>
+                            <waitUntil>published</waitUntil>
+                            <checksums>required</checksums>
+                            <centralSnapshotsUrl>https://central.sonatype.com/repository/maven-snapshots</centralSnapshotsUrl>
                         </configuration>
                     </plugin>
                     <plugin>
