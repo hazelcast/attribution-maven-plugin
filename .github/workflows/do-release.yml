@@ -35,8 +35,6 @@ jobs:
 
     - name: Do the Deployment and related stuff
       run: |
-        MAVEN_ARGS="--batch-mode --no-transfer-progress"
-        export MAVEN_ARGS
         mvn versions:set -DgenerateBackupPoms=false -DnewVersion=${{ github.event.inputs.release-version }}
         git commit -am "Release ${{ github.event.inputs.release-version }}"
         git tag v${{ github.event.inputs.release-version }}
@@ -49,3 +47,4 @@ jobs:
         MAVEN_USERNAME: ${{ secrets.SONATYPE_OSS_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.SONATYPE_OSS_PASSWORD }}
         MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+        MAVEN_ARGS: --batch-mode --no-transfer-progress
