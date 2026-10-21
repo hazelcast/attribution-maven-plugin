@@ -46,12 +46,12 @@ Both goals are thread safe and they share the following configuration.
 ### The command-line
 
 ```bash
-mvn com.hazelcast.maven:attribution-maven-plugin:1.0.1:aggregate
+./mvnw com.hazelcast.maven:attribution-maven-plugin:1.0.1:aggregate
 ```
 
 ## Building project
 
 ```bash
-mvn install
-mvn -Prun-its verify -DskipTests
+./mvnw install
+./mvnw -Prun-its verify -DskipTests
 ```

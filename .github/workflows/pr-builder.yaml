@@ -20,7 +20,7 @@ jobs:
           cache: 'maven'
       - name: Maven, now you do the magic! I enchant you the Bash way!
         run: |
-          mvn --update-snapshots install
-          mvn --activate-profiles run-its verify -DskipTests
+          ./mvnw --update-snapshots install
+          ./mvnw --activate-profiles run-its verify -DskipTests
         env:
           MAVEN_ARGS: --batch-mode --no-transfer-progress
